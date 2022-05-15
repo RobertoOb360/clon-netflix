@@ -10,7 +10,7 @@ export function MoviesGrid({ search }) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,10 +27,11 @@ export function MoviesGrid({ search }) {
   if (!isLoading && movies.length === 0) {
     return <Empty />;
   }
+
   return (
     <InfiniteScroll
       dataLength={movies.length}
-      hasMore={true}
+      hasMore={hasMore}
       next={() => setPage((prevPage) => prevPage + 1)}
       loader={<Spinner />}
     >
